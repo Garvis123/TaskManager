@@ -9,7 +9,8 @@ import TaskFilters from '../tasks/TaskFilters'
 import TaskList from '../tasks/TaskList'
 import KanbanBoard from '../tasks/KanbanBoard'
 import TaskForm from '../tasks/TaskForm'
-import StatsCards from './STATSCARDS.JSX'
+import StatsCards from './StatsCards'
+
 
 const Dashboard = () => {
   const { user, isAdmin } = useAuth()
@@ -22,7 +23,7 @@ const Dashboard = () => {
     deadline: 'all',
     assignedTo: 'all'
   })
-  const [view, setView] = useState('list') // 'list' or 'kanban'
+  const [view, setView] = useState('list')
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [editingTask, setEditingTask] = useState(null)
   const [pagination, setPagination] = useState({

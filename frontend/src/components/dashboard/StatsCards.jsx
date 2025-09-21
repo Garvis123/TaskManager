@@ -1,4 +1,3 @@
-// ==================== SRC/COMPONENTS/DASHBOARD/STATSCARDS.JSX ====================
 import { CheckSquare, Clock, AlertCircle, Users } from 'lucide-react'
 
 const StatsCards = ({ stats }) => {
