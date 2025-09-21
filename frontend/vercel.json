@@ -1,17 +1,10 @@
 {
-  "version": 2,
-  "name": "team-task-manager",
-  "buildCommand": "cd frontend && npm ci && npm run build",
-  "devCommand": "cd frontend && npm run dev",
-  "installCommand": "cd frontend && npm ci",
-  "framework": null,
-  "outputDirectory": "frontend/dist",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "builds": [
+    { "src": "frontend/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
+    { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
-  "functions": {
-    "frontend/dist/index.html": {
-      "includeFiles": "frontend/dist/**"
-    }
-  }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "frontend/dist/$1" }
+  ]
 }
