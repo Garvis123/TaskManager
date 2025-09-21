@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "team-task-manager",
+  "buildCommand": "cd frontend && npm ci && npm run build",
+  "devCommand": "cd frontend && npm run dev",
+  "installCommand": "cd frontend && npm ci",
+  "framework": null,
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "frontend/dist/index.html": {
+      "includeFiles": "frontend/dist/**"
+    }
+  }
+}

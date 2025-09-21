@@ -25,22 +25,13 @@ const allowedOrigins = [
 ].filter(Boolean); // Remove undefined values
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, postman)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    
-    // For development, allow any localhost origin
-    if (process.env.NODE_ENV === 'development' && origin.includes('localhost')) {
-      return callback(null, true);
-    }
-    
-    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-    return callback(new Error(msg), false);
-  },
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://task-manager-m67u.vercel.app',
+    'https://task-manager-89rp.vercel.app',
+    /https:\/\/.*\.vercel\.app$/  // Allow any Vercel domain
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
